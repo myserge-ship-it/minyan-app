@@ -1,95 +1,20 @@
-<!DOCTYPE html>
-<html lang="he" dir="rtl">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>מעקב מניין</title>
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{min-height:100vh;background:linear-gradient(135deg,#0f1b2d 0%,#1a2d4a 50%,#0f1b2d 100%);font-family:'Times New Roman',serif;color:#fff;padding:20px 16px 40px;direction:rtl}
-.header{text-align:center;margin-bottom:28px;padding-top:10px}
-.header h1{color:#d4af37;font-size:26px;font-weight:bold;margin-bottom:4px}
-.date{color:#8ab4d4;font-size:13px;margin-bottom:6px}
-.welcome{color:rgba(255,255,255,0.45);font-size:12px}
-.welcome span{color:#d4af37}
-.cards{max-width:420px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
-.card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:20px;transition:all 0.3s}
-.card.attending{background:rgba(212,175,55,0.1);border-color:rgba(212,175,55,0.5)}
-.card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px}
-.sname{font-size:22px;font-weight:bold;color:#fff}
-.stime{color:#8ab4d4;font-size:12px;margin-top:2px}
-.badge{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:20px;padding:4px 10px;font-size:12px;color:#8ab4d4;font-weight:bold;white-space:nowrap}
-.badge.minyan{background:rgba(72,199,116,0.2);border-color:rgba(72,199,116,0.5);color:#48c774}
-.pbar{background:rgba(255,255,255,0.08);border-radius:6px;height:6px;margin-bottom:14px;overflow:hidden;direction:ltr}
-.pfill{height:100%;background:linear-gradient(90deg,#d4af37,#f0c840);border-radius:6px;transition:width 0.4s;width:0%}
-.pfill.minyan{background:linear-gradient(90deg,#48c774,#23d160)}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
-.tag{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:3px 10px;font-size:12px;color:#ccc}
-.tag.me{background:rgba(212,175,55,0.2);border-color:rgba(212,175,55,0.4);color:#d4af37}
-.tag.needed{color:rgba(255,255,255,0.3);border:1px dashed rgba(255,255,255,0.15)}
-.btn{width:100%;padding:13px;border-radius:10px;border:1px solid rgba(212,175,55,0.4);background:transparent;color:#d4af37;font-weight:bold;font-size:15px;cursor:pointer;transition:all 0.2s}
-.btn.attending{border:none;background:linear-gradient(135deg,#d4af37,#b8941f);color:#0f1b2d}
-.footer{text-align:center;margin-top:28px;color:rgba(255,255,255,0.25);font-size:11px;line-height:1.8}
-#ns{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
-.nbox{background:rgba(255,255,255,0.05);border:1px solid rgba(212,175,55,0.3);border-radius:20px;padding:40px 32px;max-width:360px;width:100%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.5)}
-.nbox h1{color:#d4af37;font-size:28px;font-weight:bold;margin-bottom:6px}
-.nbox p{color:#8ab4d4;font-size:14px;margin-bottom:28px;line-height:1.6}
-.ni{width:100%;padding:14px 16px;border-radius:10px;border:1px solid rgba(212,175,55,0.4);background:rgba(255,255,255,0.08);color:#fff;font-size:16px;outline:none;margin-bottom:14px;text-align:center;direction:rtl}
-.eb{width:100%;padding:14px;border-radius:10px;border:none;background:linear-gradient(135deg,#d4af37,#b8941f);color:#0f1b2d;font-weight:bold;font-size:16px;cursor:pointer}
-#toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:rgba(212,175,55,0.95);color:#0f1b2d;padding:10px 22px;border-radius:30px;font-weight:bold;font-size:14px;z-index:1000;white-space:nowrap;box-shadow:0 4px 20px rgba(0,0,0,0.4);display:none}
-#ms{display:none}
-</style>
-</head>
-<body>
+<!DOCTYPE html><html lang="he" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>מעקב מניין</title><style>*{box-sizing:border-box;margin:0;padding:0}body{min-height:100vh;background:linear-gradient(135deg,#0f1b2d,#1a2d4a,#0f1b2d);font-family:'Times New Roman',serif;color:#fff;padding:20px 16px 40px;direction:rtl}h1{color:#d4af37;font-size:26px;text-align:center;margin-bottom:4px}.sub{color:#8ab4d4;font-size:13px;text-align:center;margin-bottom:6px}.wel{color:rgba(255,255,255,0.45);font-size:12px;text-align:center;margin-bottom:20px}.wel span{color:#d4af37}.cards{max-width:420px;margin:0 auto;display:flex;flex-direction:column;gap:16px}.card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:20px}.card.on{background:rgba(212,175,55,0.1);border-color:rgba(212,175,55,0.5)}.row{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px}.sn{font-size:22px;font-weight:bold}.st{color:#8ab4d4;font-size:12px;margin-top:2px}.badge{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:20px;padding:4px 10px;font-size:12px;color:#8ab4d4;font-weight:bold}.badge.ok{background:rgba(72,199,116,0.2);border-color:rgba(72,199,116,0.5);color:#48c774}.bar{background:rgba(255,255,255,0.08);border-radius:6px;height:6px;margin-bottom:14px;overflow:hidden;direction:ltr}.fill{height:100%;background:linear-gradient(90deg,#d4af37,#f0c840);border-radius:6px;transition:width 0.4s}.fill.ok{background:linear-gradient(90deg,#48c774,#23d160)}.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}.tag{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:3px 10px;font-size:12px;color:#ccc}.tag.me{background:rgba(212,175,55,0.2);border-color:rgba(212,175,55,0.4);color:#d4af37}.tag.nd{color:rgba(255,255,255,0.3);border:1px dashed rgba(255,255,255,0.15)}.btn{width:100%;padding:13px;border-radius:10px;border:1px solid rgba(212,175,55,0.4);background:transparent;color:#d4af37;font-weight:bold;font-size:15px;cursor:pointer}.btn.on{border:none;background:linear-gradient(135deg,#d4af37,#b8941f);color:#0f1b2d}.foot{text-align:center;margin-top:28px;color:rgba(255,255,255,0.25);font-size:11px;line-height:1.8}#ns{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}.nb{background:rgba(255,255,255,0.05);border:1px solid rgba(212,175,55,0.3);border-radius:20px;padding:40px 32px;max-width:360px;width:100%;text-align:center}.nb h1{font-size:28px;margin-bottom:6px}.nb p{color:#8ab4d4;font-size:14px;margin-bottom:28px;line-height:1.6}.ni{width:100%;padding:14px;border-radius:10px;border:1px solid rgba(212,175,55,0.4);background:rgba(255,255,255,0.08);color:#fff;font-size:16px;outline:none;margin-bottom:14px;text-align:center;direction:rtl}.eb{width:100%;padding:14px;border-radius:10px;border:none;background:linear-gradient(135deg,#d4af37,#b8941f);color:#0f1b2d;font-weight:bold;font-size:16px;cursor:pointer}#toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:rgba(212,175,55,0.95);color:#0f1b2d;padding:10px 22px;border-radius:30px;font-weight:bold;font-size:14px;z-index:1000;display:none}#ms{display:none}</style></head><body>
 <div id="toast"></div>
-<div id="ns">
-<div class="nbox">
-<div style="font-size:48px;margin-bottom:12px">🕍</div>
-<h1>מעקב מניין</h1>
-<p>הכנס את שמך כדי לאשר נוכחות בתפילות</p>
-<input class="ni" id="ni" type="text" placeholder="שמך הפרטי" dir="rtl">
-<button class="eb" onclick="enterApp()">כניסה ←</button>
-</div>
-</div>
-<div id="ms">
-<div class="header">
-<div style="font-size:40px;margin-bottom:6px">🕍</div>
-<h1>מעקב מניין</h1>
-<div class="date" id="td"></div>
-<div class="welcome">שלום, <span id="un"></span></div>
-</div>
-<div class="cards" id="cc"></div>
-<div class="footer">הרשמות מתאפסות בחצות כל לילה<br>שתפו את הקישור בקבוצת הווטסאפ</div>
-</div>
+<div id="ns"><div class="nb"><div style="font-size:48px;margin-bottom:12px">🕍</div><h1>מעקב מניין</h1><p>הכנס את שמך כדי לאשר נוכחות בתפילות</p><input class="ni" id="ni" type="text" placeholder="שמך הפרטי" dir="rtl"><button class="eb" onclick="go()">כניסה ←</button></div></div>
+<div id="ms"><div style="text-align:center;margin-bottom:28px;padding-top:10px"><div style="font-size:40px;margin-bottom:6px">🕍</div><h1>מעקב מניין</h1><div class="sub" id="td"></div><div class="wel">שלום, <span id="un"></span></div></div><div class="cards" id="cc"></div><div class="foot">הרשמות מתאפסות בחצות כל לילה<br>שתפו את הקישור בקבוצת הווטסאפ</div></div>
 <script type="module">
 import{initializeApp}from"https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import{getDatabase,ref,onValue,set,remove}from"https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
-const cfg={apiKey:"AIzaSyByoNEhZBTchmAVAnnQXQLlJck1Ig9halc",authDomain:"minyan-count.firebaseapp.com",projectId:"minyan-count",storageBucket:"minyan-count.firebasestorage.app",messagingSenderId:"836859092462",appId:"1:836859092462:web:59443511aade383d8b82ff",databaseURL:"https://minyan-count-default-rtdb.europe-west1.firebasedatabase.app"};
-const db=getDatabase(initializeApp(cfg));
-const SV=[{id:"shacharit",name:"שחרית",time:"תפילת הבוקר",e:"🌅"},{id:"mincha",name:"מנחה",time:"תפילת הצהריים",e:"☀️"},{id:"maariv",name:"מעריב",time:"תפילת הערב",e:"🌙"}];
-const M=10;
-function dk(){const d=new Date();return`${d.getFullYear()}-${d.getMonth()+1}-${d.getDate()}`}
+const db=getDatabase(initializeApp({apiKey:"AIzaSyByoNEhZBTchmAVAnnQXQLlJck1Ig9halc",authDomain:"minyan-count.firebaseapp.com",projectId:"minyan-count",storageBucket:"minyan-count.firebasestorage.app",messagingSenderId:"836859092462",appId:"1:836859092462:web:59443511aade383d8b82ff",databaseURL:"https://minyan-count-default-rtdb.europe-west1.firebasedatabase.app"}));
+const SV=[{id:"s",name:"שחרית",time:"תפילת הבוקר",e:"🌅"},{id:"m",name:"מנחה",time:"תפילת הצהריים",e:"☀️"},{id:"v",name:"מעריב",time:"תפילת הערב",e:"🌙"}];
+const M=10;let rv={s:{},m:{},v:{}},cid="",cn="";
+function dk(){const d=new Date();return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()}
 function uid(){let id=localStorage.getItem("mid");if(!id){id="u-"+Math.random().toString(36).slice(2,10);localStorage.setItem("mid",id)}return id}
-function toast(m){const t=document.getElementById("toast");t.textContent=m;t.style.display="block";setTimeout(()=>t.style.display="none",2500)}
-let rv={shacharit:{},mincha:{},maariv:{}},cid="",cn="";
-function render(){
-const cc=document.getElementById("cc");cc.innerHTML="";
-SV.forEach(s=>{
-const at=rv[s.id]||{},c=Object.keys(at).length,me=!!at[cid],mn=c>=M,p=Math.min(c/M*100,100);
-let th=Object.values(at).map(a=>`<span class="tag${a.name===cn?" me":""}">${a.name||"אנונימי"}</span>`).join("");
-if(c<M)th+=`<span class="tag needed">עוד ${M-c} חסרים</span>`;
-const d=document.createElement("div");
-d.className="card"+(me?" attending":"");
-d.innerHTML=`<div class="card-top"><div><div style="display:flex;align-items:center;gap:8px"><span>${s.e}</span><span class="sname">${s.name}</span></div><div class="stime">${s.time}</div></div><div class="badge${mn?" minyan":""}">${mn?"✓ יש מניין!":c+"/"+M}</div></div><div class="pbar"><div class="pfill${mn?" minyan":""}" style="width:${p}%"></div></div>${c>0?`<div class="tags">${th}</div>`:""}<button class="btn${me?" attending":""}" onclick="ts('${s.id}')">${me?"✓ אני מגיע — ביטול":"אני מגיע מחר ←"}</button>`;
-cc.appendChild(d);
-});}
-window.enterApp=function(){const n=document.getElementById("ni").value.trim();if(!n)return;localStorage.setItem("mn",n);cn=n;cid=uid();start()};
-document.getElementById("ni").addEventListener("keydown",e=>{if(e.key==="Enter")window.enterApp()});
-window.ts=function(sid){const r=ref(db,`rsvp/${dk()}/${sid}/${cid}`),me=!!(rv[sid]||{})[cid],sn=SV.find(s=>s.id===sid).name;
-if(me){remove(r);toast("הוסרת מ"+sn)}else{set(r,{name:cn,timestamp:Date.now()});const c=Object.keys(rv[sid]||{}).length+1;toast(c>=M?"🎉 יש מניין! "+c+" אנשים אישרו!":"✓ נרשמת! "+c+"/"+M+" אישרו")}};
-function start(){document.getElementById("ns").style.display="none";document.getElementById("ms").style.display="block";document.getElementById("un").textContent=cn;document.getElementById("td").textContent=new Date().toLocaleDateString("he-IL",{weekday:"long",year:"numeric",month:"long",day:"numeric"});
-SV.forEach(s=>{onValue(ref(db,`rsvp/${dk()}/${s.id}`),snap=>{rv[s.id]=snap.val()||{};render()})});}
+function toast(x){const t=document.getElementById("toast");t.textContent=x;t.style.display="block";setTimeout(()=>t.style.display="none",2500)}
+function render(){const cc=document.getElementById("cc");cc.innerHTML="";SV.forEach(s=>{const at=rv[s.id]||{},c=Object.keys(at).length,me=!!at[cid],mn=c>=M,p=Math.min(c/M*100,100);let th=Object.values(at).map(a=>'<span class="tag'+(a.name===cn?" me":"")+'">'+( a.name||"אנונימי")+"</span>").join("");if(c<M)th+='<span class="tag nd">עוד '+(M-c)+" חסרים</span>";const d=document.createElement("div");d.className="card"+(me?" on":"");d.innerHTML='<div class="row"><div><div style="display:flex;align-items:center;gap:8px"><span>'+s.e+'</span><span class="sn">'+s.name+'</span></div><div class="st">'+s.time+'</div></div><div class="badge'+(mn?" ok":"")+'">'+( mn?"✓ יש מניין!":c+"/"+M)+'</div></div><div class="bar"><div class="fill'+(mn?" ok":"")+'" style="width:'+p+'%"></div></div>'+(c>0?'<div class="tags">'+th+"</div>":"")+'<button class="btn'+(me?" on":"")+'" onclick="ts(\''+s.id+'\')">'+(me?"✓ אני מגיע — ביטול":"אני מגיע מחר ←")+"</button>";cc.appendChild(d)})}
+window.go=function(){const n=document.getElementById("ni").value.trim();if(!n)return;localStorage.setItem("mn",n);cn=n;cid=uid();start()};
+document.getElementById("ni").addEventListener("keydown",e=>{if(e.key==="Enter")window.go()});
+window.ts=function(sid){const r=ref(db,"rsvp/"+dk()+"/"+sid+"/"+cid),me=!!(rv[sid]||{})[cid],sn=SV.find(s=>s.id===sid).name;if(me){remove(r);toast("הוסרת מ"+sn)}else{set(r,{name:cn,timestamp:Date.now()});const c=Object.keys(rv[sid]||{}).length+1;toast(c>=M?"🎉 יש מניין! "+c+" אנשים אישרו!":"✓ נרשמת! "+c+"/"+M+" אישרו")}};
+function start(){document.getElementById("ns").style.display="none";document.getElementById("ms").style.display="block";document.getElementById("un").textContent=cn;document.getElementById("td").textContent=new Date().toLocaleDateString("he-IL",{weekday:"long",year:"numeric",month:"long",day:"numeric"});SV.forEach(s=>{onValue(ref(db,"rsvp/"+dk()+"/"+s.id),snap=>{rv[s.id]=snap.val()||{};render()})})}
 const sn=localStorage.getItem("mn");if(sn){cn=sn;cid=uid();start()}
-</script>
-</body>
-</html>
+</script></body></html>
